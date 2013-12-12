@@ -1,0 +1,21 @@
+- Change the /etc/sysconfig/network file and replace the HOSTNAME by the new machine name
+
+  HOSTNAME=HNN01DEV.localdomain
+
+- Edit /etc/hosts and add the entry. The following line is an example:
+
+  10.0.40.16  HNN01DEV.mydomain.com HNN01DEV
+
+- Run the following commands:
+
+  hostname $CHOSEN_HOSTNAME$
+  hostname
+  /etc/init.d/network restart
+
+- Generate a ssh rsa key on each host
+
+  ssh-keygen -t rsa
+
+- Run the script generate_keys.sh on each host to allow password-less ssh. The argument should be the other hostnames
+
+  ./generate_keys.sh HDN03DEV
